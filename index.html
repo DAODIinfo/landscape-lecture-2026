@@ -125,35 +125,15 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
 .tl-time-txt{font-family:'Space Mono',monospace;
   font-size:11px;color:rgba(240,237,229,0.3);white-space:nowrap;}
 
-/* 場次主圖 — 使用現代 aspect-ratio 屬性設定 325:200 比例 */
-.tl-session-img {
-  width: 100%;
-  aspect-ratio: 325 / 200; /* 直接設定比例，等同於 650 / 400 */
-  position: relative;
-  overflow: hidden;
-  background: #0d1e12;
-}
-.tl-session-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  transition: transform .4s;
-  display: block;
-}
-.tl-card:hover .tl-session-img img {
-  transform: scale(1.03);
-}
-.tl-session-img::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(26,43,32,0.7));
-  pointer-events: none;
-}
+/* 場次主圖 — 約一半高度 (650:200 ≈ 30.8%) */
+.tl-session-img{width:100%;height:0;padding-bottom:30.8%;
+  position:relative;overflow:hidden;background:#0d1e12;}
+.tl-session-img img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  transition:transform .4s;display:block;}
+.tl-card:hover .tl-session-img img{transform:scale(1.03);}
+.tl-session-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(to bottom,transparent,rgba(26,43,32,0.7));pointer-events:none;}
 
 /* 卡片底部 */
 .tl-card-foot{padding:12px 22px;background:rgba(0,0,0,0.12);
