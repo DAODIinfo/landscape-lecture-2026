@@ -126,14 +126,41 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
   font-size:11px;color:rgba(240,237,229,0.3);white-space:nowrap;}
 
 /* 場次主圖 — 約一半高度 (325:200 ≈ 50%) */
-.tl-session-img{width:50%;height:50%;
-  position:relative;overflow:hidden;background:#0d1e12;}
-.tl-session-img img{position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center 20%;
-  transition:transform .4s;display:block;}
-.tl-card:hover .tl-session-img img{transform:scale(1.03);}
-.tl-session-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
-  background:linear-gradient(to bottom,transparent,rgba(26,43,32,0.7));pointer-events:none;}
+/* 場次主圖 — 寬度調整為 50% */
+.tl-session-img {
+  width: 50%;           /* 寬度佔父元素的 50% */
+  aspect-ratio: 650/400; /* 保持原始圖片的比例 (約 1.625:1) */
+  position: relative;
+  overflow: hidden;
+  background: #0d1e12;
+  margin: 0 auto;       /* 如果你想讓這張半寬的圖片居中，請加上這行 */
+}
+
+.tl-session-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;          /* 填滿寬度 50% 的容器 */
+  height: 100%;         /* 填滿容器高度 */
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform .4s;
+  display: block;
+}
+
+.tl-card:hover .tl-session-img img {
+  transform: scale(1.03);
+}
+
+.tl-session-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;          /* 遮罩高度建議改為百分比，以免在小圖上佔比過大 */
+  background: linear-gradient(to bottom, transparent, rgba(26, 43, 32, 0.7));
+  pointer-events: none;
+}
 
 /* 卡片底部 */
 .tl-card-foot{padding:12px 22px;background:rgba(0,0,0,0.12);
