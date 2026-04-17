@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>景觀大師講堂 2026｜道地新傳媒</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark-green: #1a2b20;
+    --bright-green: #4ade6e;
+    --yellow: #f5d800;
+    --off-white: #f0ede5;
+    --light-gray: #d4d0c8;
+    --text-dark: #1a2b20;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark-green);
+    color: var(--off-white);
+    font-family: 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(26,43,32,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,222,110,0.2);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--bright-green);
+  }
+  .nav-logo span { color: var(--off-white); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 13px; letter-spacing: 1px;
+    color: rgba(240,237,229,0.6);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--bright-green); }
+  .nav-cta {
+    background: var(--bright-green); color: var(--dark-green);
+    padding: 8px 20px; border-radius: 4px;
+    font-size: 13px; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--yellow); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 100px 60px 80px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative; z-index: 2;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(74,222,110,0.15);
+    border: 1px solid var(--bright-green);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px; letter-spacing: 2px;
+    color: var(--bright-green);
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+  .hero-badge::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--bright-green);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 4px;
+    color: var(--yellow);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1.0;
+    margin-bottom: 8px;
+    letter-spacing: -2px;
+  }
+  .hero-title .accent { color: var(--bright-green); }
+  .hero-subtitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    letter-spacing: 4px;
+    color: var(--off-white);
+    margin-bottom: 32px;
+    line-height: 1;
+  }
+
+  .hero-meta {
+    display: flex; flex-direction: column; gap: 10px;
+    margin-bottom: 40px;
+  }
+  .hero-meta-row {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: rgba(240,237,229,0.75);
+  }
+  .hero-meta-row .icon {
+    width: 20px; height: 20px;
+    background: rgba(74,222,110,0.2);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .hero-dates {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 40px;
+  }
+  .date-chip {
+    background: rgba(74,222,110,0.1);
+    border: 1px solid rgba(74,222,110,0.3);
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--bright-green);
+    transition: all 0.2s;
+  }
+  .date-chip:hover {
+    background: rgba(74,222,110,0.2);
+    border-color: var(--bright-green);
+  }
+  .date-chip span { color: rgba(240,237,229,0.5); font-size: 11px; display: block; margin-top: 2px; }
+
+  .hero-cta-group {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--bright-green); color: var(--dark-green);
+    padding: 16px 36px; border-radius: 6px;
+    font-weight: 900; font-size: 15px;
+    text-decoration: none; letter-spacing: 1px;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--yellow); transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1px solid rgba(240,237,229,0.3); color: var(--off-white);
+    padding: 16px 28px; border-radius: 6px;
+    font-size: 14px; text-decoration: none;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-secondary:hover { border-color: var(--bright-green); color: var(--bright-green); }
+
+  /* HERO RIGHT - Speaker Grid */
+  .hero-right {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+    overflow: hidden;
+  }
+  .speaker-card {
+    background: #263d2c;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+  .speaker-card::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,43,32,0.9) 0%, transparent 50%);
+  }
+  .speaker-card-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) contrast(1.1);
+    transition: transform 0.4s;
+  }
+  .speaker-card:hover .speaker-card-img { transform: scale(1.04); }
+  .speaker-card-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 16px 18px;
+    z-index: 2;
+  }
+  .speaker-tag {
+    background: var(--bright-green); color: var(--dark-green);
+    font-size: 10px; font-weight: 700;
+    padding: 3px 8px; border-radius: 3px;
+    display: inline-block; margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .speaker-name {
+    font-size: 16px; font-weight: 700;
+    color: #fff; display: block;
+    margin-bottom: 2px;
+  }
+  .speaker-title {
+    font-size: 11px; color: rgba(255,255,255,0.65);
+    line-height: 1.4;
+  }
+
+  /* Decorative shapes */
+  .shape-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--bright-green);
+    padding: 20px 60px;
+    display: flex; align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--dark-green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12px; font-weight: 700;
+    color: rgba(26,43,32,0.7);
+    letter-spacing: 1px;
+  }
+  .stat-divider {
+    width: 1px; height: 40px;
+    background: rgba(26,43,32,0.2);
+  }
+
+  /* SESSIONS */
+  .section {
+    padding: 80px 60px;
+  }
+  .section-header {
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    gap: 20px;
+  }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 3px;
+    color: var(--bright-green); margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-size: 36px; font-weight: 900;
+    letter-spacing: -1px; line-height: 1.1;
+  }
+  .section-sub {
+    font-size: 14px; color: rgba(240,237,229,0.55);
+    max-width: 360px; line-height: 1.7;
+  }
+
+  /* Session Cards */
+  .sessions-grid {
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .session-card {
+    background: rgba(240,237,229,0.04);
+    border: 1px solid rgba(240,237,229,0.1);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 32px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .session-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--bright-green);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+    transform-origin: bottom;
+  }
+  .session-card:hover {
+    background: rgba(74,222,110,0.06);
+    border-color: rgba(74,222,110,0.3);
+    transform: translateX(4px);
+  }
+  .session-card:hover::before { transform: scaleY(1); }
+
+  .session-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(74,222,110,0.15);
+    line-height: 1;
+  }
+  .session-date-box {
+    text-align: center;
+  }
+  .session-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700;
+    color: var(--bright-green);
+    display: block;
+  }
+  .session-day {
+    font-size: 11px; color: rgba(240,237,229,0.4);
+    letter-spacing: 1px;
+  }
+  .session-info {}
+  .session-theme {
+    font-size: 11px; letter-spacing: 2px;
+    color: var(--yellow); font-weight: 700;
+    margin-bottom: 8px; text-transform: uppercase;
+  }
+  .session-speakers-row {
+    display: flex; flex-wrap: wrap; gap: 16px;
+  }
+  .session-speaker {
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .speaker-avatar {
+    width: 42px; height: 42px;
+    background: rgba(74,222,110,0.15);
+    border-radius: 8px;
+    border: 1px solid rgba(74,222,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .speaker-info {}
+  .spk-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .spk-role { font-size: 11px; color: rgba(240,237,229,0.5); line-height: 1.4; }
+  .spk-topic { font-size: 12px; color: rgba(240,237,229,0.7); margin-top: 3px; font-style: italic; }
+
+  .session-action {
+    text-align: right; flex-shrink: 0;
+  }
+  .btn-ticket {
+    background: transparent;
+    border: 1px solid var(--bright-green);
+    color: var(--bright-green);
+    padding: 10px 20px; border-radius: 6px;
+    font-size: 13px; font-weight: 700;
+    text-decoration: none; letter-spacing: 0.5px;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-ticket:hover {
+    background: var(--bright-green); color: var(--dark-green);
+  }
+  .session-price {
+    font-size: 12px; color: rgba(240,237,229,0.4);
+    margin-top: 8px;
+  }
+
+  /* PRICING SECTION */
+  .pricing-section {
+    background: rgba(74,222,110,0.04);
+    border-top: 1px solid rgba(74,222,110,0.1);
+    border-bottom: 1px solid rgba(74,222,110,0.1);
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .price-card {
+    background: rgba(240,237,229,0.04);
+    border: 1px solid rgba(240,237,229,0.1);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .price-card.featured {
+    background: var(--bright-green);
+    border-color: var(--bright-green);
+  }
+  .price-card:not(.featured):hover {
+    border-color: rgba(74,222,110,0.4);
+    background: rgba(74,222,110,0.06);
+  }
+  .price-badge {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    background: var(--yellow); color: var(--dark-green);
+    font-size: 10px; font-weight: 900; letter-spacing: 1.5px;
+    padding: 4px 12px; border-radius: 100px;
+    white-space: nowrap;
+  }
+  .price-type {
+    font-size: 12px; letter-spacing: 2px;
+    color: rgba(240,237,229,0.5); margin-bottom: 12px;
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+  }
+  .price-card.featured .price-type { color: rgba(26,43,32,0.6); }
+  .price-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; line-height: 1;
+    color: var(--off-white); margin-bottom: 4px;
+  }
+  .price-card.featured .price-amount { color: var(--dark-green); }
+  .price-unit { font-size: 12px; color: rgba(240,237,229,0.4); margin-bottom: 8px; }
+  .price-card.featured .price-unit { color: rgba(26,43,32,0.5); }
+  .price-original {
+    font-size: 12px; color: rgba(240,237,229,0.3);
+    text-decoration: line-through; margin-bottom: 16px;
+  }
+  .price-card.featured .price-original { color: rgba(26,43,32,0.4); }
+  .price-includes {
+    font-size: 12px; color: rgba(240,237,229,0.6); line-height: 1.8;
+  }
+  .price-card.featured .price-includes { color: rgba(26,43,32,0.7); }
+
+  .prize-notice {
+    margin-top: 32px;
+    background: rgba(245,216,0,0.08);
+    border: 1px solid rgba(245,216,0,0.3);
+    border-radius: 10px;
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .prize-icon { font-size: 28px; }
+  .prize-text {}
+  .prize-title { font-size: 14px; font-weight: 700; color: var(--yellow); margin-bottom: 4px; }
+  .prize-desc { font-size: 12px; color: rgba(240,237,229,0.6); line-height: 1.6; }
+
+  /* PARTNERS */
+  .partners-section {
+    padding: 40px 60px;
+    border-top: 1px solid rgba(240,237,229,0.08);
+    display: flex; align-items: center; gap: 40px;
+    flex-wrap: wrap;
+  }
+  .partner-label {
+    font-size: 11px; letter-spacing: 2px;
+    color: rgba(240,237,229,0.35);
+    text-transform: uppercase; flex-shrink: 0;
+    font-family: 'Space Mono', monospace;
+  }
+  .partner-logos {
+    display: flex; gap: 32px; align-items: center; flex-wrap: wrap;
+  }
+  .partner-logo-item {
+    font-weight: 700; font-size: 14px;
+    color: rgba(240,237,229,0.4);
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border: 1px solid rgba(240,237,229,0.12);
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .partner-logo-item:hover {
+    color: var(--bright-green);
+    border-color: rgba(74,222,110,0.3);
+  }
+
+  /* LINE CTA */
+  .line-cta {
+    background: linear-gradient(135deg, rgba(74,222,110,0.12), rgba(245,216,0,0.06));
+    border: 1px solid rgba(74,222,110,0.2);
+    margin: 0 60px 80px;
+    border-radius: 16px;
+    padding: 40px 48px;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 24px;
+    flex-wrap: wrap;
+  }
+  .line-text {}
+  .line-text h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .line-text p { font-size: 13px; color: rgba(240,237,229,0.6); }
+  .btn-line {
+    background: #06C755; color: #fff;
+    padding: 14px 28px; border-radius: 8px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none; letter-spacing: 0.5px;
+    display: inline-flex; align-items: center; gap: 10px;
+    flex-shrink: 0; transition: all 0.2s;
+  }
+  .btn-line:hover { background: #05a847; transform: translateY(-1px); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid rgba(240,237,229,0.08);
+    padding: 32px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px; letter-spacing: 3px;
+    color: var(--bright-green);
+  }
+  .footer-copy {
+    font-size: 12px; color: rgba(240,237,229,0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 400px; }
+    .hero-left { padding: 60px 24px 40px; }
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .section { padding: 60px 24px; }
+    .session-card { grid-template-columns: 1fr; gap: 16px; }
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { padding: 20px 24px; }
+    .stat-num { font-size: 30px; }
+    .partners-section, .line-cta { margin: 0 24px 40px; padding: 24px; }
+    footer { padding: 24px; }
+  }
+
+  /* Decorative BG grid */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: 
+      linear-gradient(rgba(74,222,110,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,222,110,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none; z-index: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">道地 <span>DAODI</span></div>
+  <div class="nav-links">
+    <a href="#">首頁</a>
+    <a href="#">報導</a>
+    <a href="#">活動</a>
+    <a href="#">關於我們</a>
+  </div>
+  <a href="#tickets" class="nav-cta">立即購票 →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">2026 景觀大師講堂元年</div>
+    <div class="hero-label">中華民國景觀學會 × 道地新傳媒</div>
+    <h1 class="hero-title">設計師<span class="accent">必修</span></h1>
+    <div class="hero-subtitle">景觀大師講堂</div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-row">
+        <div class="icon">📍</div>
+        <span>CAAM 承德 168 會議中心・台北</span>
+      </div>
+      <div class="hero-meta-row">
+        <div class="icon">⏰</div>
+        <span>週六下午 13:30 – 17:20</span>
+      </div>
+      <div class="hero-meta-row">
+        <div class="icon">👤</div>
+        <span>5 大議題・10 場演講・5 位大師師資</span>
+      </div>
+    </div>
+
+    <div class="hero-dates">
+      <div class="date-chip">6/13<span>生態環境規劃</span></div>
+      <div class="date-chip">6/27<span>永續景觀設計</span></div>
+      <div class="date-chip">7/11<span>樸門永續設計</span></div>
+      <div class="date-chip">8/1<span>河川溪流復育</span></div>
+      <div class="date-chip">8/29<span>原生植物應用</span></div>
+    </div>
+
+    <div class="hero-cta-group">
+      <a href="#tickets" class="btn-primary">
+        🎟 前往活動通購票
+      </a>
+      <a href="#sessions" class="btn-secondary">
+        查看場次詳情 ↓
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!-- Speaker placeholders with styled cards -->
+    <div class="speaker-card" style="background: linear-gradient(135deg, #263d2c, #1a2b20);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:0.15;">🌿</div>
+      <div class="speaker-card-info">
+        <div class="speaker-tag">生態環境規劃</div>
+        <span class="speaker-name">詹鳳春</span>
+        <span class="speaker-title">日本認證樹木醫</span>
+      </div>
+    </div>
+    <div class="speaker-card" style="background: linear-gradient(135deg, #1e3526, #152b1c);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:0.15;">🏔</div>
+      <div class="speaker-card-info">
+        <div class="speaker-tag">永續設計</div>
+        <span class="speaker-name">汪怡嘉</span>
+        <span class="speaker-title">文化大學景觀學系副教授</span>
+      </div>
+    </div>
+    <div class="speaker-card" style="background: linear-gradient(135deg, #2b3d1a, #1e2b12);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:0.15;">🌊</div>
+      <div class="speaker-card-info">
+        <div class="speaker-tag">河川復育</div>
+        <span class="speaker-name">廖桂賢</span>
+        <span class="speaker-title">社團法人台灣河溪網協會理事長</span>
+      </div>
+    </div>
+    <div class="speaker-card" style="background: linear-gradient(135deg, #263324, #1a2b18);">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:0.15;">🌱</div>
+      <div class="speaker-card-info">
+        <div class="speaker-tag">原生植物</div>
+        <span class="speaker-name">呂文實</span>
+        <span class="speaker-title">台灣原生植物推廣協會前理事長</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-label">大核心議題</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">10</div>
+    <div class="stat-label">場精華演講</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">15H</div>
+    <div class="stat-label">專業課程總時數</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">5</div>
+    <div class="stat-label">位大師級師資</div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <div class="stat-num">62萬+</div>
+    <div class="stat-label">道地平台累積瀏覽</div>
+  </div>
+</div>
+
+<!-- SESSIONS -->
+<section class="section" id="sessions">
+  <div class="section-header">
+    <div>
+      <div class="section-label">// Session Schedule</div>
+      <h2 class="section-title">五場系列講座</h2>
+    </div>
+    <p class="section-sub">每場邀請 2 位跨域講師，透過 90 分鐘深度講授（含 Q&A），提供兼具理論與實務的知識內容。</p>
+  </div>
+
+  <div class="sessions-grid">
+
+    <!-- Session 1 -->
+    <div class="session-card">
+      <div class="session-date-box">
+        <div class="session-num">01</div>
+        <span class="session-date">6/13（六）</span>
+        <span class="session-day">13:30 – 17:20</span>
+      </div>
+      <div class="session-info">
+        <div class="session-theme">🌿 生態環境規劃</div>
+        <div class="session-speakers-row">
+          <div class="session-speaker">
+            <div class="speaker-avatar">詹</div>
+            <div class="speaker-info">
+              <div class="spk-name">詹鳳春</div>
+              <div class="spk-role">日本認證樹木醫</div>
+              <div class="spk-topic">「適地適木與微氣候」</div>
+            </div>
+          </div>
+          <div class="session-speaker">
+            <div class="speaker-avatar">魏</div>
+            <div class="speaker-info">
+              <div class="spk-name">魏顯權</div>
+              <div class="spk-role">台灣省園藝技師公會常務監事</div>
+              <div class="spk-topic">「景觀設計上的生態思維」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-action">
+        <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="session-price">單場 $1,200</div>
+      </div>
+    </div>
+
+    <!-- Session 2 -->
+    <div class="session-card">
+      <div class="session-date-box">
+        <div class="session-num">02</div>
+        <span class="session-date">6/27（六）</span>
+        <span class="session-day">13:30 – 17:20</span>
+      </div>
+      <div class="session-info">
+        <div class="session-theme">🏛 樸門與永續設計</div>
+        <div class="session-speakers-row">
+          <div class="session-speaker">
+            <div class="speaker-avatar">汪</div>
+            <div class="speaker-info">
+              <div class="spk-name">汪怡嘉</div>
+              <div class="spk-role">文化大學景觀學系副教授</div>
+              <div class="spk-topic">「設計之外的設計｜從國際景觀到農場實踐」</div>
+            </div>
+          </div>
+          <div class="session-speaker">
+            <div class="speaker-avatar">魏</div>
+            <div class="speaker-info">
+              <div class="spk-name">魏顯權</div>
+              <div class="spk-role">台灣省園藝技師公會常務監事</div>
+              <div class="spk-topic">「自然解方（NBS）在景觀上的實務應用」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-action">
+        <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="session-price">單場 $1,200</div>
+      </div>
+    </div>
+
+    <!-- Session 3 -->
+    <div class="session-card">
+      <div class="session-date-box">
+        <div class="session-num">03</div>
+        <span class="session-date">7/11（六）</span>
+        <span class="session-day">13:30 – 17:20</span>
+      </div>
+      <div class="session-info">
+        <div class="session-theme">🌾 樸門與永續設計</div>
+        <div class="session-speakers-row">
+          <div class="session-speaker">
+            <div class="speaker-avatar">汪</div>
+            <div class="speaker-info">
+              <div class="spk-name">汪怡嘉</div>
+              <div class="spk-role">文化大學景觀學系副教授</div>
+              <div class="spk-topic">「如果生活也能被設計？談樸門設計的日常實踐」</div>
+            </div>
+          </div>
+          <div class="session-speaker">
+            <div class="speaker-avatar">呂</div>
+            <div class="speaker-info">
+              <div class="spk-name">呂文實</div>
+              <div class="spk-role">台灣原生植物推廣協會前理事長</div>
+              <div class="spk-topic">「植物的適地適種與伴生思維」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-action">
+        <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="session-price">單場 $1,200</div>
+      </div>
+    </div>
+
+    <!-- Session 4 -->
+    <div class="session-card">
+      <div class="session-date-box">
+        <div class="session-num">04</div>
+        <span class="session-date">8/1（六）</span>
+        <span class="session-day">13:30 – 17:20</span>
+      </div>
+      <div class="session-info">
+        <div class="session-theme">🌊 河川溪流復育</div>
+        <div class="session-speakers-row">
+          <div class="session-speaker">
+            <div class="speaker-avatar">呂</div>
+            <div class="speaker-info">
+              <div class="spk-name">呂文實</div>
+              <div class="spk-role">台灣原生植物推廣協會前理事長</div>
+              <div class="spk-topic">「台灣原生植物應用趨勢」</div>
+            </div>
+          </div>
+          <div class="session-speaker">
+            <div class="speaker-avatar">廖</div>
+            <div class="speaker-info">
+              <div class="spk-name">廖桂賢</div>
+              <div class="spk-role">社團法人台灣河溪網協會理事長</div>
+              <div class="spk-topic">「河川復育內涵與概念演進」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-action">
+        <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="session-price">單場 $1,200</div>
+      </div>
+    </div>
+
+    <!-- Session 5 -->
+    <div class="session-card">
+      <div class="session-date-box">
+        <div class="session-num">05</div>
+        <span class="session-date">8/29（六）</span>
+        <span class="session-day">13:30 – 17:20</span>
+      </div>
+      <div class="session-info">
+        <div class="session-theme">🌳 原生植物與樹木醫學</div>
+        <div class="session-speakers-row">
+          <div class="session-speaker">
+            <div class="speaker-avatar">廖</div>
+            <div class="speaker-info">
+              <div class="spk-name">廖桂賢</div>
+              <div class="spk-role">社團法人台灣河溪網協會理事長</div>
+              <div class="spk-topic">「台灣河川溪流復育設計指引介紹」</div>
+            </div>
+          </div>
+          <div class="session-speaker">
+            <div class="speaker-avatar">詹</div>
+            <div class="speaker-info">
+              <div class="spk-name">詹鳳春</div>
+              <div class="spk-role">日本認證樹木醫</div>
+              <div class="spk-topic">「樹性與自然配植」</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="session-action">
+        <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="session-price">單場 $1,200</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section pricing-section" id="tickets">
+  <div class="section-header">
+    <div>
+      <div class="section-label">// Ticket Options</div>
+      <h2 class="section-title">票券方案</h2>
+    </div>
+    <p class="section-sub">早鳥套票限量販售，建議提早購入以鎖定完整學習計畫。</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-type">單場票</div>
+      <div class="price-amount">1,200</div>
+      <div class="price-unit">元／場</div>
+      <div class="price-original"></div>
+      <div class="price-includes">
+        ✓ 任選單場參加<br>
+        ✓ 講師 Q&A 環節<br>
+        ✓ 活動當日講義
+      </div>
+    </div>
+
+    <div class="price-card" style="position:relative">
+      <div class="price-badge">早鳥限定</div>
+      <div class="price-type">個人早鳥套票</div>
+      <div class="price-amount">5,400</div>
+      <div class="price-unit">元／5 場</div>
+      <div class="price-original">原價 6,000 元</div>
+      <div class="price-includes">
+        ✓ 全系列 5 場通用<br>
+        ✓ 大師通票識別<br>
+        ✓ 抽獎資格（書籍禮）
+      </div>
+    </div>
+
+    <div class="price-card featured" style="position:relative">
+      <div class="price-badge">最推薦</div>
+      <div class="price-type" style="color:rgba(26,43,32,0.6)">5 場套票</div>
+      <div class="price-amount" style="color:var(--dark-green)">5,800</div>
+      <div class="price-unit" style="color:rgba(26,43,32,0.5)">元／5 場</div>
+      <div class="price-original" style="color:rgba(26,43,32,0.3)">原價 6,000 元</div>
+      <div class="price-includes" style="color:rgba(26,43,32,0.7)">
+        ✓ 全系列 5 場通用<br>
+        ✓ 大師通票識別<br>
+        ✓ 抽獎資格（書籍禮）<br>
+        ✓ 道地電子報訂閱
+      </div>
+    </div>
+
+    <div class="price-card" style="position:relative">
+      <div class="price-badge" style="background:var(--bright-green)">企業優惠</div>
+      <div class="price-type">企業培育套票</div>
+      <div class="price-amount">10,000</div>
+      <div class="price-unit">元／雙人 5 場</div>
+      <div class="price-original">原價 13,500 元</div>
+      <div class="price-includes">
+        ✓ 雙人同行全系列<br>
+        ✓ 2 位抽獎機會<br>
+        ✓ 學會會員加碼至 11,000
+      </div>
+    </div>
+  </div>
+
+  <div class="prize-notice">
+    <div class="prize-icon">📚</div>
+    <div class="prize-text">
+      <div class="prize-title">套票限定抽獎｜Design with Nature Now 道法自然進行式</div>
+      <div class="prize-desc">購買套票者享抽獎資格，繁體中文版精裝書（市價 NT$3,500）將於 6/13 首場由詹鳳春老師現場抽出。個人套票 1 位資格，雙人套票 2 位資格。</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="https://www.accupass.com" target="_blank" class="btn-primary" style="font-size:17px;padding:18px 48px">
+      🎟 前往活動通購票頁面
+    </a>
+    <div style="font-size:12px;color:rgba(240,237,229,0.3);margin-top:12px">透過活動通（ACCUPASS）安全購票</div>
+  </div>
+</section>
+
+<!-- LINE CTA -->
+<div class="line-cta">
+  <div class="line-text">
+    <h3>🔔 加入道地官方 LINE，領取早鳥優惠通知</h3>
+    <p>輸入關鍵字「115景觀」，取得講座行前資料與當天數位講義，並獲得未來課程第一手資訊。</p>
+  </div>
+  <a href="#" class="btn-line">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    加入 LINE 官方帳號
+  </a>
+</div>
+
+<!-- PARTNERS -->
+<div class="partners-section">
+  <div class="partner-label">主辦 × 協辦</div>
+  <div class="partner-logos">
+    <div class="partner-logo-item">中華民國景觀學會</div>
+    <div class="partner-logo-item">道地新傳媒 DAODI</div>
+    <div class="partner-logo-item">振業化工廠股份有限公司</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">DAODI 道地新傳媒</div>
+  <div class="footer-copy">© 2026 道地新傳媒 · 中華民國景觀學會系列講座</div>
+</footer>
+
+</body>
+</html>
