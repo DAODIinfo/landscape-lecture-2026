@@ -32,7 +32,8 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
   background:linear-gradient(to bottom,transparent,var(--dk));pointer-events:none;}
 
 /* QUICK INFO */
-.quick-info{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;padding:24px 60px 16px;position:relative;z-index:1;}
+.quick-info{display:flex;justify-content:center;flex-wrap:wrap;gap:20px;
+  padding:24px 60px 16px;position:relative;z-index:1;}
 .qi{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(240,237,229,0.75);}
 .qi-icon{width:26px;height:26px;background:rgba(74,222,110,0.15);border-radius:5px;
   display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
@@ -50,16 +51,112 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
 .sec-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;
   color:var(--gr);margin-bottom:10px;text-transform:uppercase;}
 .sec-title{font-size:34px;font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:6px;}
-.sec-sub{font-size:13px;color:rgba(240,237,229,0.5);line-height:1.7;max-width:480px;margin-bottom:56px;}
+.sec-sub{font-size:13px;color:rgba(240,237,229,0.5);line-height:1.7;max-width:520px;margin-bottom:56px;}
+
+/* ── 即將開賣區塊 ── */
+.coming-soon{
+  position:relative;z-index:1;
+  margin:0 60px 0;
+  border-radius:20px;
+  border:1px solid rgba(74,222,110,0.25);
+  overflow:hidden;
+  background:rgba(74,222,110,0.04);
+}
+.cs-inner{
+  padding:52px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:32px;flex-wrap:wrap;
+}
+.cs-left{}
+.cs-eyebrow{
+  font-family:'Space Mono',monospace;
+  font-size:11px;letter-spacing:3px;color:var(--gr);
+  text-transform:uppercase;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.cs-dot{width:7px;height:7px;border-radius:50%;background:var(--gr);
+  animation:pulse 1.4s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.8);}}
+
+.cs-title{
+  font-size:clamp(28px,4vw,44px);font-weight:900;
+  letter-spacing:-1px;line-height:1.1;margin-bottom:16px;
+}
+.cs-title em{color:var(--gr);font-style:normal;}
+
+.cs-desc{
+  font-size:14px;color:rgba(240,237,229,0.6);
+  line-height:1.8;max-width:460px;margin-bottom:28px;
+}
+
+/* 票種條列（無金額） */
+.cs-tickets{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px;}
+.cs-ticket-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  border:1px solid rgba(240,237,229,0.15);
+  border-radius:100px;padding:6px 16px;
+  font-size:12px;color:rgba(240,237,229,0.6);
+}
+.cs-ticket-tag.highlight{
+  border-color:rgba(74,222,110,0.4);
+  color:var(--gr);
+  background:rgba(74,222,110,0.08);
+}
+
+.cs-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-notify{
+  background:var(--gr);color:var(--dk);
+  padding:14px 32px;border-radius:8px;
+  font-weight:900;font-size:15px;
+  text-decoration:none;letter-spacing:0.5px;
+  display:inline-flex;align-items:center;gap:8px;transition:all .2s;
+}
+.btn-notify:hover{background:var(--ye);}
+.btn-line-sm{
+  background:#06C755;color:#fff;
+  padding:14px 24px;border-radius:8px;
+  font-weight:700;font-size:14px;
+  text-decoration:none;
+  display:inline-flex;align-items:center;gap:8px;transition:all .2s;
+}
+.btn-line-sm:hover{background:#05a847;}
+
+/* 右側倒數/日期展示 */
+.cs-right{flex-shrink:0;}
+.cs-dates-stack{display:flex;flex-direction:column;gap:8px;}
+.cs-date-row{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 16px;
+  background:rgba(240,237,229,0.04);
+  border:1px solid rgba(240,237,229,0.08);
+  border-radius:10px;
+  transition:border-color .2s;
+}
+.cs-date-row:hover{border-color:rgba(74,222,110,0.2);}
+.cs-date-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;color:var(--gr);line-height:1;
+  min-width:48px;
+}
+.cs-date-info{}
+.cs-date-title{font-size:12px;font-weight:700;color:var(--ow);margin-bottom:1px;}
+.cs-date-sub{font-size:11px;color:rgba(240,237,229,0.4);}
+
+/* 開賣提示條 */
+.cs-sale-note{
+  background:rgba(245,216,0,0.08);
+  border-top:1px solid rgba(245,216,0,0.2);
+  padding:14px 60px;
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:rgba(245,216,0,0.8);
+}
+.cs-sale-note strong{color:var(--ye);font-weight:700;}
 
 /* ── TIMELINE ── */
 .tl-wrap{position:relative;}
-.tl-line{position:absolute;left:60px;top:24px;bottom:24px;
+.tl-line{position:absolute;left:50px;top:24px;bottom:24px;
   width:1px;background:rgba(74,222,110,0.2);}
-
-.tl-item{display:grid;grid-template-columns:120px 1fr;gap:0;margin-bottom:32px;position:relative;}
-
-/* 左側日期欄 */
+.tl-item{display:grid;grid-template-columns:100px 1fr;gap:0;margin-bottom:32px;position:relative;}
 .tl-left{display:flex;flex-direction:column;align-items:center;
   padding-top:24px;position:relative;z-index:2;}
 .tl-dot{width:14px;height:14px;border-radius:50%;
@@ -67,56 +164,27 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
   box-shadow:0 0 0 1px rgba(74,222,110,0.4);
   margin-bottom:10px;flex-shrink:0;}
 .tl-date-num{font-family:'Bebas Neue',sans-serif;
-  font-size:42px;color:var(--gr);line-height:1;text-align:center;}
+  font-size:36px;color:var(--gr);line-height:1;text-align:center;}
 .tl-date-sub{font-family:'Space Mono',monospace;
   font-size:11px;color:rgba(240,237,229,0.45);
   letter-spacing:1px;text-align:center;margin-top:3px;}
-
-/* 場次標題（日期下方）*/
-.tl-session-title{
-  font-size:11px;font-weight:700;
-  color:rgba(240,237,229,0.55);
-  text-align:center;
-  line-height:1.5;
-  margin-top:10px;
-  padding:0 4px;
-  writing-mode:horizontal-tb;
-}
-
 .tl-num-big{font-family:'Bebas Neue',sans-serif;
   font-size:44px;color:rgba(74,222,110,0.07);
   line-height:1;margin-top:8px;}
 
-/* 右側卡片 */
-.tl-card{background:rgba(240,237,229,0.04);
-  border:1px solid rgba(240,237,229,0.1);
-  border-radius:14px;overflow:hidden;
-  transition:all .3s;margin-left:16px;}
+.tl-card{background:rgba(240,237,229,0.04);border:1px solid rgba(240,237,229,0.1);
+  border-radius:14px;overflow:hidden;transition:all .3s;margin-left:12px;}
 .tl-card:hover{background:rgba(74,222,110,0.06);
   border-color:rgba(74,222,110,0.3);transform:translateX(4px);}
 
-/* 卡片 header */
-.tl-card-head{padding:16px 22px 14px;
+.tl-card-head{padding:14px 22px 14px;
   border-bottom:1px solid rgba(240,237,229,0.07);
-  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-
-/* 場次大標題（卡片內）*/
-.tl-card-session-title{
-  font-size:22px;font-weight:900;
-  color:var(--ow);
-  letter-spacing:0.3px;
-  line-height:1.4;
-  flex:1;
-}
-.tl-card-session-title span{
-  display:block;
-  font-size:11px;font-weight:400;
-  color:rgba(240,237,229,0.4);
-  font-family:'Space Mono',monospace;
-  letter-spacing:1px;
-  margin-bottom:6px;
-}
-
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.tl-card-session-title{font-size:22px;font-weight:900;color:var(--ow);
+  letter-spacing:0.3px;line-height:1.4;flex:1;}
+.tl-card-session-title span{display:block;font-size:11px;font-weight:400;
+  color:rgba(240,237,229,0.4);font-family:'Space Mono',monospace;
+  letter-spacing:1px;margin-bottom:6px;}
 .tl-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;}
 .tl-theme-badge{display:inline-flex;align-items:center;gap:6px;
   background:rgba(245,216,0,0.1);border:1px solid rgba(245,216,0,0.3);
@@ -125,88 +193,28 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
 .tl-time-txt{font-family:'Space Mono',monospace;
   font-size:11px;color:rgba(240,237,229,0.3);white-space:nowrap;}
 
-/* 場次主圖 — 調整寬度並保持正確比例 */
-.tl-session-img {
-  width: 50%;                /* 寬度佔父元素的 50% */
-  aspect-ratio: 650 / 400;   /* 根據圖片原始尺寸設定比例，容器高度會自動計算 */
-  position: relative;
-  overflow: hidden;
-  background: #0d1e12;
-}
+.tl-session-img{width:100%;height:0;padding-bottom:30.8%;
+  position:relative;overflow:hidden;background:#0d1e12;}
+.tl-session-img img{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 20%;
+  transition:transform .4s;display:block;}
+.tl-card:hover .tl-session-img img{transform:scale(1.03);}
+.tl-session-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40px;
+  background:linear-gradient(to bottom,transparent,rgba(26,43,32,0.7));pointer-events:none;}
 
-.tl-session-img img {
-  position: absolute;
-  inset: 0;
-  width: 100%;               /* 寬度填滿容器 */
-  height: 100%;              /* 高度填滿容器 */
-  object-fit: cover;         /* 保持比例填滿，微調裁切 */
-  object-position: center center; /* 改為置中，可以看到更多臉部細節 */
-  transition: transform .4s;
-  display: block;
-}
-
-.tl-card:hover .tl-session-img img {
-  transform: scale(1.05);    /* 稍微放大增加動感 */
-}
-
-.tl-session-img::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40%;               /* 將固定高度改為百分比，避免遮住整張小圖 */
-  background: linear-gradient(to bottom, transparent, rgba(26, 43, 32, 0.8));
-  pointer-events: none;
-}
-}
-
-/* 卡片底部 */
+/* 卡片底部：移除費用，只保留 LINE 提醒 */
 .tl-card-foot{padding:12px 22px;background:rgba(0,0,0,0.12);
-  display:flex;align-items:center;justify-content:space-between;
+  display:flex;align-items:center;justify-content:flex-end;
   border-top:1px solid rgba(240,237,229,0.06);}
-.tl-price{font-size:12px;color:rgba(240,237,229,0.35);}
-.btn-ticket{background:transparent;border:1px solid var(--gr);color:var(--gr);
-  padding:8px 20px;border-radius:6px;font-size:12px;font-weight:700;
-  text-decoration:none;letter-spacing:0.5px;
-  display:inline-flex;align-items:center;gap:5px;transition:all .2s;}
-.btn-ticket:hover{background:var(--gr);color:var(--dk);}
-
-/* PRICING */
-.pricing-sec{background:rgba(74,222,110,0.04);
-  border-top:1px solid rgba(74,222,110,0.1);border-bottom:1px solid rgba(74,222,110,0.1);}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.price-card{background:rgba(240,237,229,0.04);border:1px solid rgba(240,237,229,0.1);
-  border-radius:12px;padding:26px 22px;transition:all .3s;position:relative;}
-.price-card.feat{background:var(--gr);border-color:var(--gr);}
-.price-card:not(.feat):hover{border-color:rgba(74,222,110,0.4);background:rgba(74,222,110,0.06);}
-.price-badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);
-  background:var(--ye);color:var(--dk);font-size:10px;font-weight:900;
-  letter-spacing:1.5px;padding:4px 12px;border-radius:100px;white-space:nowrap;}
-.price-type{font-size:11px;letter-spacing:2px;color:rgba(240,237,229,0.5);
-  margin-bottom:10px;text-transform:uppercase;font-family:'Space Mono',monospace;}
-.feat .price-type{color:rgba(26,43,32,0.6);}
-.price-amt{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:var(--ow);margin-bottom:3px;}
-.feat .price-amt{color:var(--dk);}
-.price-unit{font-size:12px;color:rgba(240,237,229,0.4);margin-bottom:6px;}
-.feat .price-unit{color:rgba(26,43,32,0.5);}
-.price-orig{font-size:12px;color:rgba(240,237,229,0.3);text-decoration:line-through;margin-bottom:14px;}
-.feat .price-orig{color:rgba(26,43,32,0.4);}
-.price-inc{font-size:12px;color:rgba(240,237,229,0.6);line-height:1.9;}
-.feat .price-inc{color:rgba(26,43,32,0.7);}
-.prize-box{margin-top:28px;background:rgba(245,216,0,0.08);border:1px solid rgba(245,216,0,0.3);
-  border-radius:10px;padding:18px 24px;display:flex;align-items:center;gap:14px;}
-.prize-icon{font-size:26px;}
-.prize-title{font-size:13px;font-weight:700;color:var(--ye);margin-bottom:4px;}
-.prize-desc{font-size:12px;color:rgba(240,237,229,0.6);line-height:1.6;}
-.btn-main{background:var(--gr);color:var(--dk);padding:15px 36px;border-radius:6px;
-  font-weight:900;font-size:15px;text-decoration:none;letter-spacing:1px;
-  transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-main:hover{background:var(--ye);transform:translateY(-1px);}
+.tl-notify-hint{
+  font-size:12px;color:rgba(240,237,229,0.35);
+  display:flex;align-items:center;gap:6px;letter-spacing:0.5px;
+}
+.tl-notify-hint::before{content:'';}
 
 /* LINE CTA */
 .line-cta{background:linear-gradient(135deg,rgba(74,222,110,0.12),rgba(245,216,0,0.06));
-  border:1px solid rgba(74,222,110,0.2);margin:0 60px 60px;border-radius:16px;
+  border:1px solid rgba(74,222,110,0.2);margin:60px 60px 0;border-radius:16px;
   padding:32px 44px;display:flex;align-items:center;justify-content:space-between;
   gap:20px;flex-wrap:wrap;position:relative;z-index:1;}
 .line-text h3{font-size:19px;font-weight:700;margin-bottom:6px;}
@@ -228,18 +236,20 @@ nav{position:sticky;top:0;z-index:100;background:rgba(26,43,32,0.97);backdrop-fi
 .org-desc{font-size:12px;color:rgba(240,237,229,0.5);line-height:1.7;}
 
 footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;position:relative;z-index:1;}
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:10px;position:relative;z-index:1;margin-top:60px;}
 .foot-copy{font-size:12px;color:rgba(240,237,229,0.3);}
 
 @media(max-width:860px){
   nav{padding:0 12px;gap:3px;}.nav-a{font-size:11px;padding:5px 10px;}
   .sec,.org-sec{padding:48px 20px;}
+  .coming-soon{margin:0 20px;}.cs-inner{padding:36px 24px;}
+  .cs-sale-note{padding:12px 24px;}
   .tl-item{grid-template-columns:90px 1fr;}.tl-line{left:45px;}
-  .tl-date-num{font-size:22px;}.tl-session-title{font-size:10px;}
-
-  .pricing-grid{grid-template-columns:1fr 1fr;}
-  .line-cta{margin:0 20px 40px;padding:22px;}
-  footer{padding:20px;}.quick-info{padding:18px 20px 10px;}.stats{padding:14px 20px;}
+  .tl-date-num{font-size:30px;}
+  .line-cta{margin:40px 20px 0;padding:22px;}
+  footer{padding:20px;margin-top:40px;}
+  .quick-info{padding:18px 20px 10px;}.stats{padding:14px 20px;}
 }
 </style>
 </head>
@@ -248,15 +258,17 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
 <nav>
   <a href="#about"     class="nav-a">關於講座</a>
   <a href="#sessions"  class="nav-a">講座介紹</a>
-  <a href="#tickets"   class="nav-a">票券方案</a>
+  <a href="#tickets"   class="nav-a">票券資訊</a>
   <a href="#organizer" class="nav-a">主辦單位</a>
-  <a href="https://www.accupass.com/event/2604170754402070293205" target="_blank" class="nav-a cta">🎟 立即購票</a>
+  <a href="#tickets"   class="nav-a cta">🔔 開賣通知</a>
 </nav>
 
+<!-- BANNER -->
 <section id="about">
   <img src="banner.png" alt="設計師必修 景觀大師講堂 2026" class="banner-img">
 </section>
 
+<!-- QUICK INFO -->
 <div class="quick-info">
   <div class="qi"><div class="qi-icon">📍</div><span>CAAM 承德 168 會議中心・台北</span></div>
   <div class="qi"><div class="qi-icon">📅</div><span>6/13、6/27、7/11、8/1、8/29（週六）</span></div>
@@ -264,6 +276,7 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
   <div class="qi"><div class="qi-icon">🎓</div><span>5 大議題・10 場演講・15 小時</span></div>
 </div>
 
+<!-- STATS -->
 <div class="stats">
   <div class="stat"><div class="stat-n">5</div><div class="stat-l">大核心議題</div></div>
   <div class="stat-div"></div>
@@ -273,19 +286,19 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
   <div class="stat-div"></div>
   <div class="stat"><div class="stat-n">5</div><div class="stat-l">位大師級師資</div></div>
   <div class="stat-div"></div>
-  <div class="stat"><div class="stat-n">62萬+</div><div class="stat-l">道地平台累積瀏覽</div></div>
+  <div class="stat"><div class="stat-n">70萬+</div><div class="stat-l">道地平台累積瀏覽</div></div>
 </div>
 
 <!-- 講座介紹 -->
 <section class="sec" id="sessions">
   <div class="sec-label">// Session Schedule</div>
   <div class="sec-title">五場系列講座</div>
-  <div class="sec-sub">每場邀請 2 位跨域講師，90 分鐘深度講授（含 Q&amp;A），兼具理論與實務的知識內容。</div>
+  <div class="sec-sub">每場邀請 2 位跨域講師，90 分鐘深度講授（含 Q&amp;A），兼具理論與實務的知識內容。每場均獨立售票，亦可購買全系列套票。</div>
 
   <div class="tl-wrap">
     <div class="tl-line"></div>
 
-    <!-- ── 第 1 場 ── -->
+    <!-- 第1場 -->
     <div class="tl-item">
       <div class="tl-left">
         <div class="tl-dot"></div>
@@ -299,22 +312,14 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
             <span>Session 01</span>
             景觀實務專題：打造會呼吸的地景
           </div>
-          <div class="tl-header-right">
-            <div class="tl-theme-badge">🌿 生態環境規劃</div>
-            <div class="tl-time-txt">13:30 – 17:20</div>
-          </div>
+          <div class="tl-time-txt">13:30 – 17:20</div>
         </div>
         <div class="tl-session-img">
           <img src="session01.jpg" alt="景觀實務專題：打造會呼吸的地景">
         </div>
-        <div class="tl-card-foot">
-          <span class="tl-price">單場票 NT$1,200</span>
-          <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="tl-card-foot" style="justify-content:center;">
+          <div class="tl-notify-hint">詳細資訊即將公布，敬請期待</div>
         </div>
-      </div>
-    </div>
-
-    <!-- ── 第 2 場 ── -->
     <div class="tl-item">
       <div class="tl-left">
         <div class="tl-dot"></div>
@@ -328,22 +333,18 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
             <span>Session 02</span>
             從國際視野到自然解方 (NbS)
           </div>
-          <div class="tl-header-right">
-            <div class="tl-theme-badge">🏛 樸門與永續設計</div>
-            <div class="tl-time-txt">13:30 – 17:20</div>
-          </div>
+          <div class="tl-time-txt">13:30 – 17:20</div>
         </div>
         <div class="tl-session-img">
           <img src="session02.jpg" alt="從國際視野到自然解方">
         </div>
-        <div class="tl-card-foot">
-          <span class="tl-price">單場票 NT$1,200</span>
-          <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="tl-card-foot" style="justify-content:center;">
+          <div class="tl-notify-hint">詳細資訊即將公布，敬請期待</div>
         </div>
       </div>
     </div>
 
-    <!-- ── 第 3 場 ── -->
+    <!-- 第3場 -->
     <div class="tl-item">
       <div class="tl-left">
         <div class="tl-dot"></div>
@@ -357,22 +358,18 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
             <span>Session 03</span>
             當代植栽趨勢與樸門日常
           </div>
-          <div class="tl-header-right">
-            <div class="tl-theme-badge">🌾 樸門與永續設計</div>
-            <div class="tl-time-txt">13:30 – 17:20</div>
-          </div>
+          <div class="tl-time-txt">13:30 – 17:20</div>
         </div>
         <div class="tl-session-img">
           <img src="session03.jpg" alt="當代植栽趨勢與樸門日常">
         </div>
-        <div class="tl-card-foot">
-          <span class="tl-price">單場票 NT$1,200</span>
-          <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="tl-card-foot" style="justify-content:center;">
+          <div class="tl-notify-hint">詳細資訊即將公布，敬請期待</div>
         </div>
       </div>
     </div>
 
-    <!-- ── 第 4 場 ── -->
+    <!-- 第4場 -->
     <div class="tl-item">
       <div class="tl-left">
         <div class="tl-dot"></div>
@@ -386,22 +383,18 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
             <span>Session 04</span>
             原生植栽實務與河川復育演進
           </div>
-          <div class="tl-header-right">
-            <div class="tl-theme-badge">🌊 河川溪流復育</div>
-            <div class="tl-time-txt">13:30 – 17:20</div>
-          </div>
+          <div class="tl-time-txt">13:30 – 17:20</div>
         </div>
         <div class="tl-session-img">
           <img src="session04.jpg" alt="原生植栽實務與河川復育演進">
         </div>
-        <div class="tl-card-foot">
-          <span class="tl-price">單場票 NT$1,200</span>
-          <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="tl-card-foot" style="justify-content:center;">
+          <div class="tl-notify-hint">詳細資訊即將公布，敬請期待</div>
         </div>
       </div>
     </div>
 
-    <!-- ── 第 5 場 ── -->
+    <!-- 第5場 -->
     <div class="tl-item">
       <div class="tl-left">
         <div class="tl-dot"></div>
@@ -415,17 +408,13 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
             <span>Session 05</span>
             樹木醫學與河川溪流復育
           </div>
-          <div class="tl-header-right">
-            <div class="tl-theme-badge">🌳 原生植物與樹木醫學</div>
-            <div class="tl-time-txt">13:30 – 17:20</div>
-          </div>
+          <div class="tl-time-txt">13:30 – 17:20</div>
         </div>
         <div class="tl-session-img">
           <img src="session05.jpg" alt="樹木醫學與河川溪流復育">
         </div>
-        <div class="tl-card-foot">
-          <span class="tl-price">單場票 NT$1,200</span>
-          <a href="https://www.accupass.com" target="_blank" class="btn-ticket">🎟 購票</a>
+        <div class="tl-card-foot" style="justify-content:center;">
+          <div class="tl-notify-hint">詳細資訊即將公布，敬請期待</div>
         </div>
       </div>
     </div>
@@ -433,65 +422,38 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
   </div>
 </section>
 
-<!-- 票券方案 -->
-<section class="sec pricing-sec" id="tickets">
-  <div class="sec-label">// Ticket Options</div>
-  <div class="sec-title">票券方案</div>
-  <div class="sec-sub">早鳥套票限量販售，建議提早購入以鎖定完整學習計畫。</div>
-  <div class="pricing-grid">
-    <div class="price-card">
-      <div class="price-type">單場票</div>
-      <div class="price-amt">1,200</div>
-      <div class="price-unit">元／場</div>
-      <div class="price-orig">&nbsp;</div>
-      <div class="price-inc">✓ 任選單場<br>✓ 講師 Q&amp;A<br>✓ 當日講義</div>
-    </div>
-    <div class="price-card" style="position:relative">
-      <div class="price-badge">早鳥限定</div>
-      <div class="price-type">個人早鳥套票</div>
-      <div class="price-amt">5,400</div>
-      <div class="price-unit">元／5 場</div>
-      <div class="price-orig">原價 6,000 元</div>
-      <div class="price-inc">✓ 全系列 5 場通用<br>✓ 大師通票識別<br>✓ 抽獎資格</div>
-    </div>
-    <div class="price-card feat" style="position:relative">
-      <div class="price-badge">最推薦</div>
-      <div class="price-type">5 場套票</div>
-      <div class="price-amt">5,800</div>
-      <div class="price-unit">元／5 場</div>
-      <div class="price-orig">原價 6,000 元</div>
-      <div class="price-inc">✓ 全系列 5 場通用<br>✓ 抽獎資格<br>✓ 道地電子報訂閱</div>
-    </div>
-    <div class="price-card" style="position:relative">
-      <div class="price-badge" style="background:var(--gr)">企業優惠</div>
-      <div class="price-type">企業培育套票</div>
-      <div class="price-amt">10,000</div>
-      <div class="price-unit">元／雙人 5 場</div>
-      <div class="price-orig">原價 13,500 元</div>
-      <div class="price-inc">✓ 雙人同行全系列<br>✓ 2 位抽獎機會<br>✓ 會員加碼 11,000</div>
-    </div>
-  </div>
-  <div class="prize-box">
-    <div class="prize-icon">📚</div>
-    <div>
-      <div class="prize-title">套票限定抽獎｜Design with Nature Now 道法自然進行式（市價 NT$3,500）</div>
-      <div class="prize-desc">購買套票者享抽獎資格，於 6/13 首場由詹鳳春老師現場抽出。個人套票 1 位資格，雙人套票 2 位資格。</div>
-    </div>
-  </div>
-  <div style="text-align:center;margin-top:36px">
-    <a href="https://www.accupass.com/event/2604170754402070293205" target="_blank" class="btn-main">🎟 前往活動通購票頁面</a>
-    <div style="font-size:12px;color:rgba(240,237,229,0.3);margin-top:10px">透過活動通（ACCUPASS）安全購票</div>
-  </div>
-</section>
+<!-- 即將開賣區塊 -->
+<div class="coming-soon" id="tickets">
+  <div class="cs-inner">
+    <div class="cs-left">
+      <div class="cs-eyebrow">
+        <div class="cs-dot"></div>
+        Tickets Coming Soon
+      </div>
+      <div class="cs-title">票券<em>即將</em>開賣</div>
+      <div class="cs-desc">
+        本系列講座提供單場票與全系列套票，套票方案享早鳥優惠並附抽獎資格。<br>
+        加入道地官方 LINE，於開賣前第一時間接收通知，掌握早鳥搶購機會。
+      </div>
+      <div class="cs-tickets">
+        <div class="cs-ticket-tag">單場票</div>
+        <div class="cs-ticket-tag highlight">個人早鳥套票（限量）</div>
+        <div class="cs-ticket-tag">5 場套票</div>
+        <div class="cs-ticket-tag">企業培育套票</div>
+        <div class="cs-ticket-tag">景觀學會會員套票</div>
+      </div>
 
-<div class="line-cta">
-  <div class="line-text">
-    <h3>🔔 加入道地官方 LINE，領取早鳥優惠通知</h3>
-    <p>輸入關鍵字「115景觀」，取得講座行前資料與當天數位講義，並獲得未來課程第一手資訊。</p>
+    </div>
+
   </div>
-  <a href="#" class="btn-line">加入 LINE 官方帳號</a>
+  <div class="cs-sale-note">
+    🎁&nbsp;<strong>套票限定：</strong>凡購買套票者享抽獎資格，獎品為「Design with Nature Now 道法自然進行式」繁體中文精裝版（市價 NT$3,500），於 6/13 首場現場抽出。
+  </div>
 </div>
 
+
+
+<!-- 主辦單位 -->
 <section class="org-sec" id="organizer">
   <div class="sec-label">// Organizers</div>
   <div class="sec-title" style="margin-bottom:0">主辦單位</div>
@@ -499,24 +461,20 @@ footer{border-top:1px solid rgba(240,237,229,0.08);padding:24px 60px;
     <div class="org-card">
       <div class="org-role">主辦</div>
       <div class="org-name">中華民國景觀學會</div>
-      <div class="org-desc">推動台灣景觀專業發展與教育的重要學術組織，長期舉辦台灣景觀大獎等專業活動。</div>
     </div>
     <div class="org-card">
-      <div class="org-role">執行</div>
-      <div class="org-name">道地新傳媒</div>
-      <div class="org-desc">自 2023 年深耕景觀、環境與地方議題，平台累積瀏覽超過 62 萬人次，具備內容策劃、視覺整合與行銷推廣能力。</div>
+      <div class="org-role">主辦</div>
+      <div class="org-name">道地新傳媒股份有限公司</div>
     </div>
     <div class="org-card">
       <div class="org-role">場地協辦</div>
       <div class="org-name">振業化工廠股份有限公司</div>
-      <div class="org-desc">提供 CAAM 承德 168 會議中心作為本系列講座場地，支持景觀專業教育推廣。</div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="foot-copy">© 2026 道地新傳媒 × 中華民國景觀學會・115 年度景觀系列講座</div>
-  <div class="foot-copy">聯絡：02-2778-0650 #393｜台北市大安區忠孝東路四段310號5樓</div>
 </footer>
 
 </body>
